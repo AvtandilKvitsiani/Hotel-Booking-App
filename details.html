@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Booking App</title>
+  <link rel="stylesheet" href="styles2.css"> <!-- Link to your CSS file -->
+  <style>
+    /* CSS styles for image display */
+    .hotel-details img,
+    #hotel-slider img,
+    .hotel-card img {
+      max-width: 90%;
+      height: 200px;
+    }
+/* Added styles to center the images in the "Hotel Details" section */
+#hotel-details-page .hotel-details .centered-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles for the "Make Reservation" button */
+.make-reservation-button {
+  background-color: #ffcd00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.make-reservation-button:hover {
+  background-color: #fcb400;
+}
+
+/* Added styles for "Added to Favorites" button */
+.added-to-favorites-button {
+  background-color: #00cc00;
+  color: #fff;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="details.html">Hotel Details</a></li>
+        <li><a href="favorites.html">Add to Favorites</a></li>
+        <li><a href="reservation.html">Hotel Reservation</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="all-hotels-page">
+    <h2>All Hotels</h2>
+    <div class="hotel-listings">
+      <div class="hotel-card">
+        <img src="hotel1.jpg" alt="Hotel 1">
+        <h3>Hotel 1</h3>
+        <p>Rating: 4.5/5</p>
+        <p>Price: $150 per night</p>
+        <button onclick="addToFavorites('1')">Add to Favorites</button>
+        <button onclick="makeReservation('Hotel 1')">Make Reservation</button>
+      </div>
+      <div class="hotel-card">
+        <img src="hotel2.jpg" alt="Hotel 2">
+        <h3>Hotel 2</h3>
+        <p>Rating: 4/5</p>
+        <p>Price: $120 per night</p>
+        <button onclick="addToFavorites('2')">Add to Favorites</button>
+        <button onclick="makeReservation('Hotel 2')">Make Reservation</button>
+      </div>
+      <div class="hotel-card">
+        <img src="hotel3.jpg" alt="Hotel 3">
+        <h3>Hotel 3</h3>
+        <p>Rating: 4.2/5</p>
+        <p>Price: $180 per night</p>
+        <button onclick="addToFavorites('3')">Add to Favorites</button>
+        <button onclick="makeReservation('Hotel 3')">Make Reservation</button>
+      </div>
+      <div class="hotel-card">
+        <img src="hotel4.jpg" alt="Hotel 4">
+        <h3>Hotel 4</h3>
+        <p>Rating: 4.7/5</p>
+        <p>Price: $190 per night</p>
+        <button onclick="addToFavorites('4')">Add to Favorites</button>
+        <button onclick="makeReservation('Hotel 4')">Make Reservation</button>
+      </div>
+    </div>
+  </section>
+  <section id="hotel-details-page">
+    <h2>Hotel Details</h2>
+    <div class="hotel-details">
+      <div id="hotel-slider" class="centered-images">
+        <div>
+          <img src="hotel1.jpg" alt="Hotel 1">
+          <h3>Hotel 1</h3>
+          <p>Rating: 4.5/5</p>
+          <p>Price: $150 per night</p>
+          <p>Amenities: Free Wi-Fi, Fitness Center, Swimming Pool.</p>
+          <button onclick="addToFavorites('1')">Add to Favorites</button>
+          <button onclick="makeReservation('Hotel 1')">Make Reservation</button>
+        </div>
+        <div>
+          <img src="hotel2.jpg" alt="Hotel 2">
+          <h3>Hotel 2</h3>
+          <p>Rating: 4/5</p>
+          <p>Price: $120 per night</p>
+          <p>Amenities: Free Wi-Fi, Restaurant, Gym.</p>
+          <button onclick="addToFavorites('2')">Add to Favorites</button>
+          <button onclick="makeReservation('Hotel 2')">Make Reservation</button>
+        </div>
+        <div>
+          <img src="hotel3.jpg" alt="Hotel 3">
+          <h3>Hotel 3</h3>
+          <p>Rating: 4.2/5</p>
+          <p>Price: $180 per night</p>
+          <p>Amenities: Free Wi-Fi, Pool, Spa.</p>
+          <button onclick="addToFavorites('3')">Add to Favorites</button>
+          <button onclick="makeReservation('Hotel 3')">Make Reservation</button>
+        </div>
+        <div>
+          <img src="hotel4.jpg" alt="Hotel 4">
+          <h3>Hotel 4</h3>
+          <p>Rating: 4.7/5</p>
+          <p>Price: $190 per night</p>
+          <p>Amenities: Free Wi-Fi, Parking, Bar.</p>
+          <button onclick="addToFavorites('4')">Add to Favorites</button>
+          <button onclick="makeReservation('Hotel 4')">Make Reservation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-content">
+      <img src="logo.jpg" alt="Hotel Booking App Logo">
+      <p>Contact us: 592934815</p>
+    </div>
+  </footer>
+  <script>
+    function addToFavorites(hotel) {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      if (!favorites.includes(hotel)) {
+        favorites.push(hotel);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        window.location.href = "favorites.html";
+
+        const buttons = document.querySelectorAll(".hotel-card button");
+        buttons.forEach(function (button) {
+          const hotelId = button.getAttribute("onclick").match(/'([^']+)'/)[1];
+          if (hotelId === hotel) {
+            button.classList.add("added-to-favorites-button");
+          }
+        });
+      }
+    }
+
+    function makeReservation(hotel) {
+      window.location.href = "reservation.html?hotel=" + encodeURIComponent(hotel);
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const buttons = document.querySelectorAll(".hotel-card button");
+      buttons.forEach(function (button) {
+        const hotel = button.getAttribute("onclick").match(/'([^']+)'/)[1];
+        if (favorites.includes(hotel)) {
+          button.textContent = "Added to Favorites";
+          button.classList.add("added-to-favorites-button");
+          button.disabled = true;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

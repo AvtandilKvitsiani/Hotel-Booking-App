@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Booking App - Hotel Reservation</title>
+  <link rel="stylesheet" href="styles2.css"> <!-- Link to your CSS file -->
+  <style>
+
+    /* CSS styles for image display */
+    /* ... (styles omitted for brevity) ... */
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="details.html">Hotel Details</a></li>
+        <li><a href="favorites.html">Add to Favorites</a></li>
+        <li><a href="reservation.html">Hotel Reservation</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hotel Reservation Page -->
+  <section id="reservation-page">
+    <h2>Hotel Reservation</h2>
+    <!-- Reservation form goes here -->  
+    <form id="reservation-form">
+
+        <label for="hotelName">Hotel:</label>
+      <input type="text" id="hotelName" name="hotelName" required>
+
+      <label for="check-in-date">Check-in Date:</label>
+      <input type="date" id="check-in-date" required>
+
+      <label for="check-out-date">Check-out Date:</label>
+      <input type="date" id="check-out-date" required>
+
+      <label for="guests">Number of Guests:</label>
+      <input type="number" id="guests" min="1" required>
+
+      <button type="submit">Make Reservation</button>
+<!-- ... (reservation form omitted for brevity) ... -->
+
+      
+
+    </form>
+  </section>
+
+  <footer style="margin-top: 100px;">
+    <div class="footer-content">
+      <img src="logo.jpg" alt="Hotel Booking App Logo">
+      <p>Contact us: 592934815</p>
+    </div>
+  </footer>
+
+  <script>
+    // Get the value of the "hotel" query parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const hotelName = urlParams.get('hotel');
+    
+    // Set the value of the "hotelName" field in the form
+    const hotelNameInput = document.getElementById('hotelName');
+    hotelNameInput.value = hotelName;
+  </script>
+</body>
+</html>

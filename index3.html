@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Booking App</title>
+  <link rel="stylesheet" href="styles2.css"> <!-- Link to your CSS file -->
+  <style>
+    /* CSS styles for image display */
+
+    .hotel-details img {
+      max-width: 90%;
+      height: auto;
+      max-height: 200px;
+    }
+
+    #hotel-slider img {
+      max-width: 50%;
+      height: auto;
+      max-height: 300px;
+    }
+
+    .hotel-card img {
+      max-width: 25%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+          <ul>
+            <li><a href="index3.html">Home</a></li>
+        <li><a href="details.html">Hotel Details</a></li>
+        <li><a href="favorites.html">Add to Favorites</a></li>
+        <li><a href="reservation.html">Hotel Reservation</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+
+  <!-- Landing Page -->
+  <section id="landing-page">
+    <h1>Welcome to our Hotel Booking App!</h1>
+    <!-- Banner or Slider listing hotels in demand -->
+    <div id="hotel-slider">
+      <img src="hotel1.jpg" alt="Hotel 1">
+      <img src="hotel2.jpg" alt="Hotel 2">
+      <img src="hotel3.jpg" alt="Hotel 3">
+      <img src="hotel4.jpg" alt="Hotel 4">
+    </div>
+  </section>
+
+  <!-- Our Services Section -->
+  <section id="our-services">
+    <h2>Our Services</h2>
+    <p>We provide a range of services to enhance your hotel booking experience:</p>
+    <ul>
+      <li>Search and browse through a wide selection of hotels</li>
+      <li>View detailed hotel descriptions and amenities</li>
+      <li>Add hotels to your favorites list for easy access</li>
+      <li>Make hotel reservations quickly and securely</li>
+    </ul>
+  </section>
+
+  <!-- All Hotels Page -->
+  <section id="all-hotels-page">
+    <h2>All Hotels</h2>
+    <!-- Hotel listings go here -->
+    <div class="hotel-listings">
+      <div class="hotel-card">
+        <img src="hotel1.jpg" alt="Hotel 1">
+        <h3>Hotel 1</h3>
+        <p>Rating: 4.5/5</p>
+        <p>Price: $150 per night</p>
+      </div>
+      <div class="hotel-card">
+        <img src="hotel2.jpg" alt="Hotel 2">
+        <h3>Hotel 2</h3>
+        <p>Rating: 4/5</p>
+        <p>Price: $120 per night</p>
+      </div>
+      <div class="hotel-card">
+        <img src="hotel3.jpg" alt="Hotel 3">
+        <h3>Hotel 3</h3>
+        <p>Rating: 4.2/5</p>
+        <p>Price: $180 per night</p>
+      </div>
+      <div class="hotel-card">
+        <img src="hotel4.jpg" alt="Hotel 4">
+        <h3>Hotel 3</h3>
+        <p>Rating: 4.7/5</p>
+        <p>Price: $190 per night</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Hotel Description Page -->
+  <section id="hotel-details-page">
+    <h2>Hotel Details</h2>
+    <!-- Detailed hotel description goes here -->
+    <div class="hotel-details">
+      <img src="hotel1.jpg" alt="Hotel 1">
+      <h3>Hotel 1</h3>
+      <p>Rating: 4.5/5</p>
+      <p>Price: $150 per night</p>
+      <p>Location: City Center</p>
+      <p>Amenities: Free Wi-Fi, Fitness Center, Swimming Pool.</p>
+      <button>Add to Favorites</button>
+      <button>Make Reservation</button>
+    </div>
+  </section>
+
+  <!-- Favorites Page -->
+  <section id="favorites-page">
+    <h2>Favorites</h2>
+    <!-- Favorite hotels list goes here -->
+    <div class="favorites-list">
+      <div class="hotel-card">
+        <img src="hotel2.jpg" alt="Hotel 2">
+        <h3>Hotel 2</h3>
+        <p>Rating: 4/5</p>
+        <p>Price: $120 per night</p>
+        <p>Location: City Center</p>
+      <p>Amenities: Free Wi-Fi, Helicopter, Swimming Pool, Car Rental.</p>
+      <button>Add to Favorites</button>
+      <button>Make Reservation</button>
+      </div>
+
+      <div class="hotel-card">
+        <img src="hotel3.jpg" alt="Hotel 3">
+        <h3>Hotel 3</h3>
+        <p>Rating: 4.2/5</p>
+        <p>Price: $180 per night</p>
+        <p>Location: City Left</p>
+      <p>Amenities: Free Wi-Fi, Restaurant, Swimming Pool.</p>
+      <button>Add to Favorites</button>
+      <button>Make Reservation</button>
+      </div>
+
+      <div class="hotel-card">
+        <img src="hotel4.jpg" alt="Hotel 4">
+        <h3>Hotel 3</h3>
+        <p>Rating: 4.7/5</p>
+        <p>Price: $190 per night</p>
+        <p>Location: City Right</p>
+      <p>Amenities: Free Wi-Fi, Restaurant, Swimming Pool, Private Jet, Yacht Trip.</p>
+      <button>Add to Favorites</button>
+      <button>Make Reservation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hotel Reservation Page -->
+  <section id="reservation-page">
+    <h2>Hotel Reservation</h2>
+    <!-- Reservation form goes here -->
+    <form id="reservation-form">
+      <label for="check-in-date">Check-in Date:</label>
+      <input type="date" id="check-in-date" required>
+
+      <label for="check-out-date">Check-out Date:</label>
+      <input type="date" id="check-out-date" required>
+
+      <label for="guests">Number of Guests:</label>
+      <input type="number" id="guests" min="1" required>
+
+      <button type="submit">Make Reservation</button>
+    </form>
+  </section>
+
+  <!-- Contact Page -->
+  <section id="contact-page">
+    <h2>Contact Us</h2>
+    <!-- Contact form goes here -->
+    <form id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script src="scripts.js"></script>
+
+  <!DOCTYPE html>
+
+  <html lang="en">
+  <head>
+  </head>
+  <body>
+
+    <script>
+      // Landing Page - Slider functionality
+      const hotelSlider = document.getElementById('hotel-slider');
+      const images = ['hotel1.jpg', 'hotel2.jpg', 'hotel3.jpg', 'hotel4.jpg'];
+      let currentImageIndex = 0;
+  
+      function changeSliderImage() {
+        hotelSlider.src = images[currentImageIndex];
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+      }
+  
+      setInterval(changeSliderImage, 3000); // Change image every 3 seconds
+  
+      // All Hotels Page - Show/Hide detailed description
+      const hotelCards = document.querySelectorAll('.hotel-card');
+  
+      hotelCards.forEach(card => {
+        const hotelDetails = card.querySelector('.hotel-details');
+        const addToFavoritesBtn = card.querySelector('button');
+        const makeReservationBtn = addToFavoritesBtn.nextElementSibling;
+  
+        addToFavoritesBtn.addEventListener('click', () => {
+          // Add to Favorites functionality (casual logic)
+          addToFavoritesBtn.textContent = 'Added!';
+          addToFavoritesBtn.disabled = true;
+        });
+  
+        makeReservationBtn.addEventListener('click', () => {
+          // Hotel Reservation functionality (casual logic)
+          makeReservationBtn.textContent = 'Reserved!';
+          makeReservationBtn.disabled = true;
+        });
+  
+        card.addEventListener('click', () => {
+          // Show/Hide detailed description
+          hotelDetails.classList.toggle('show');
+        });
+      });
+  
+      // Contact Page - Submit form functionality
+      const contactForm = document.getElementById('contact-form');
+  
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+  
+        // Perform form submission (casual logic)
+        // Display the submitted values in an alert message
+        alert(`Form submitted!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
+  
+        // Reset form fields
+        contactForm.reset();
+      });
+    </script>
+
+  </body>
+  
+  </html>
+  
+  <footer>
+    <div class="footer-content">
+      <img src="logo.jpg" alt="Hotel Booking App Logo">
+      <p>Contact us: 592934815</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Booking App</title>
+  <link rel="stylesheet" href="styles2.css"> <!-- Link to your CSS file -->
+  <style>
+    /* CSS styles for image display */
+    /* ... (styles omitted for brevity) ... */
+    .hotel-slider-container {
+      width: 100%;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    
+    .hotel-slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .hotel-card {
+      flex: 0 0 100%;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer; /* Add cursor pointer for clickable effect */
+    }
+    
+    .hotel-details {
+      display: none; /* Hide hotel details by default */
+    }
+    
+    .hotel-details.show {
+      display: block; /* Show hotel details when clicked */
+    }
+    
+    .hotel-details img {
+      max-width: 90%;
+      height: auto;
+      max-height: 200px;
+    }
+    
+    #hotel-slider img {
+      max-width: 80%;
+      height: auto;
+      max-height: 300px;
+    }
+    
+    .hotel-card img {
+      max-width: 100%;
+      height: auto ;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="details.html">Hotel Details</a></li>
+        <li><a href="favorites.html">Add to Favorites</a></li>
+        <li><a href="reservation.html">Hotel Reservation</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Landing Page -->
+  <section id="landing-page">
+    <h1>Welcome to our Hotel Booking App!</h1>
+    <!-- Banner or Slider listing hotels in demand -->
+    <div id="hotel-slider">
+      <img src="hotel1.jpg" alt="Hotel 1">
+      <img src="hotel2.jpg" alt="Hotel 2">
+      <img src="hotel3.jpg" alt="Hotel 3">
+      <img src="hotel4.jpg" alt="Hotel 4">
+    </div>
+  </section>
+
+  <!-- Our Services Section -->
+  <section id="our-services">
+    <h2>Our Services</h2>
+    <p>We provide a range of services to enhance your hotel booking experience:</p>
+    <ul>
+      <li>Search and browse through a wide selection of hotels</li>
+      <li>View detailed hotel descriptions and amenities</li>
+      <li>Add hotels to your favorites list for easy access</li>
+      <li>Make hotel reservations quickly and securely</li>
+    </ul>
+  </section>
+
+  <!-- All Hotels Page -->
+  <section id="all-hotels-page">
+    <h2>All Hotels</h2>
+    <!-- Hotel listings go here -->
+    <div class="hotel-slider-container">
+      <div class="hotel-slider">
+        <div class="hotel-listings">
+          <div class="hotel-card">
+            <img src="hotel1.jpg" alt="Hotel 1">
+            <h3>Hotel 1</h3>
+            <p>Rating: 4.5/5</p>
+            <p>Price: $150 per night</p>
+            <div class="hotel-details">
+              <h4>Hotel 1 Details</h4>
+              <p>Address: 123 Main Street</p>
+              <p>Phone: 123-456-7890</p>
+              <p>Website: <a href="#">www.hotel1.com</a></p>
+            </div>
+          </div>
+          <div class="hotel-card">
+            <img src="hotel2.jpg" alt="Hotel 2">
+            <h3>Hotel 2</h3>
+            <p>Rating: 4/5</p>
+            <p>Price: $120 per night</p>
+            <div class="hotel-details">
+              <h4>Hotel 2 Details</h4>
+              <p>Address: 456 Park Avenue</p>
+              <p>Phone: 987-654-3210</p>
+              <p>Website: <a href="#">www.hotel2.com</a></p>
+            </div>
+          </div>
+          <div class="hotel-card">
+            <img src="hotel3.jpg" alt="Hotel 3">
+            <h3>Hotel 3</h3>
+            <p>Rating: 4.2/5</p>
+            <p>Price: $180 per night</p>
+            <div class="hotel-details">
+              <h4>Hotel 3 Details</h4>
+              <p>Address: 789 Elm Street</p>
+              <p>Phone: 543-210-9876</p>
+              <p>Website: <a href="#">www.hotel3.com</a></p>
+            </div>
+          </div>
+          <div class="hotel-card">
+            <img src="hotel4.jpg" alt="Hotel 4">
+            <h3>Hotel 4</h3>
+            <p>Rating: 4.7/5</p>
+            <p>Price: $190 per night</p>
+            <div class="hotel-details">
+              <h4>Hotel 4 Details</h4>
+              <p>Address: 987 Oak Street</p>
+              <p>Phone: 012-345-6789</p>
+              <p>Website: <a href="#">www.hotel4.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Slider functionality
+    const hotelSlider = document.querySelector('.hotel-slider');
+    const hotelCards = document.querySelectorAll('.hotel-card');
+    const cardWidth = hotelCards[0].offsetWidth;
+    let currentPosition = 0;
+
+    function slideToNextHotel() {
+      currentPosition += cardWidth;
+
+      if (currentPosition > 0) {
+        currentPosition = -((hotelCards.length - 1) * cardWidth);
+      }
+
+      hotelSlider.style.transform = `translateX(${currentPosition}px)`;
+    }
+
+    setInterval(slideToNextHotel, 3000); // Slide to next hotel every 3 seconds
+
+    // Hotel details functionality
+    hotelCards.forEach((card) => {
+      const hotelDetails = card.querySelector('.hotel-details');
+
+      card.addEventListener('click', () => {
+        const isDetailsVisible = hotelDetails.classList.contains('show');
+        
+        // Hide all hotel details
+        hotelCards.forEach((card) => {
+          card.querySelector('.hotel-details').classList.remove('show');
+        });
+
+        // Show details for the clicked hotel only if it was not visible
+        if (!isDetailsVisible) {
+          hotelDetails.classList.add('show');
+        }
+      });
+    });
+  </script>
+  <footer>
+    <div class="footer-content">
+      <img src="logo.jpg" alt="Hotel Booking App Logo">
+      <p>Contact us: 592934815</p>
+    </div>
+  </footer>
+</body>
+
+</html>

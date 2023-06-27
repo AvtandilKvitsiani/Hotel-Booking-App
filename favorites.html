@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Booking App - Add to Favorites</title>
+  <link rel="stylesheet" href="styles2.css"> <!-- Link to your CSS file -->
+  <style>
+    /* CSS styles for image display */
+    .hotel-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* CSS styles for footer positioning */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    #favorites-page {
+      flex: 1;
+    }
+
+    footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="details.html">Hotel Details</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+        <li><a href="reservation.html">Hotel Reservation</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Favorites Page -->
+  <section id="favorites-page">
+    <h2>Favorites</h2>
+    <!-- Favorite hotels list goes here -->
+    <div id="favorites-list"></div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <img src="logo.jpg" alt="Hotel Booking App Logo">
+      <p>Contact us: 592934815</p>
+    </div>
+  </footer>
+
+  <script>
+    function addToFavorites(hotel) {
+      // Check if the hotel is already in favorites
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      if (!favorites.includes(hotel)) {
+        favorites.push(hotel);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+      }
+      // Redirect to the favorites page
+      window.location.href = "favorites.html";
+    }
+
+    function removeFromFavorites(hotel) {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const index = favorites.indexOf(hotel);
+      if (index !== -1) {
+        favorites.splice(index, 1);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+      }
+      updateFavoritesPage();
+    }
+
+    function updateFavoritesPage() {
+      const favoritesList = document.getElementById("favorites-list");
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+      favoritesList.innerHTML = ""; // Clear the existing list
+
+      if (favorites.length === 0) {
+        const message = document.createElement("p");
+        message.textContent = "You haven't added any hotels to favorites yet.";
+        favoritesList.appendChild(message);
+      } else {
+        favorites.forEach((hotel) => {
+          const hotelCard = document.createElement("div");
+          hotelCard.classList.add("hotel-card");
+
+          const image = document.createElement("img");
+          image.src = "hotel" + hotel + ".jpg";
+          image.alt = "Hotel " + hotel;
+          hotelCard.appendChild(image);
+
+          const hotelName = document.createElement("h3");
+          hotelName.textContent = "Hotel " + hotel;
+          hotelCard.appendChild(hotelName);
+
+          const rating = document.createElement("p");
+          rating.textContent = "Rating: 4.5/5"; // Replace with actual hotel rating
+          hotelCard.appendChild(rating);
+
+          const price = document.createElement("p");
+          price.textContent = "Price: $150 per night"; // Replace with actual hotel price
+          hotelCard.appendChild(price);
+
+          const location = document.createElement("p");
+          location.textContent = "Location: City Corner"; // Replace with actual hotel location
+          hotelCard.appendChild(location);
+
+          const amenities = document.createElement("p");
+          amenities.textContent = "Amenities: Free Wi-Fi, Fitness Center, Restaurant, Swimming Pool."; // Replace with actual hotel amenities
+          hotelCard.appendChild(amenities);
+
+          const removeButton = document.createElement("button");
+          removeButton.textContent = "Remove from Favorites";
+          removeButton.onclick = () => removeFromFavorites(hotel);
+          hotelCard.appendChild(removeButton);
+
+          const reservationButton = document.createElement("button");
+          reservationButton.textContent = "Make Reservation";
+          reservationButton.onclick = () => {
+            // Perform actions to make a reservation for the hotel
+            // Replace the alert with your desired functionality
+            window.location.href = "reservation.html?hotel=" + encodeURIComponent(hotel);
+          };
+          hotelCard.appendChild(reservationButton);
+
+          favoritesList.appendChild(hotelCard);
+        });
+      }
+    }
+
+    // Call updateFavoritesPage on page load
+    window.addEventListener("load", updateFavoritesPage);
+  </script>
+</body>
+</html>
